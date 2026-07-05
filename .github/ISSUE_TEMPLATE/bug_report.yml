@@ -1,0 +1,45 @@
+name: Bug report
+description: Report something that broke or behaved unexpectedly.
+title: "Bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Privacy reminder: do not paste secrets, credentials, API keys, private workflow data, or customer data. Use sample workflows or redacted details only.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: Example: Chrome 126, Firefox 127, Safari 18
+    validations:
+      required: false
+  - type: input
+    id: sample-workflow
+    attributes:
+      label: Sample workflow used
+      description: Name the sample file or describe the workflow without sensitive details.
+      placeholder: clean-simple-workflow.json
+    validations:
+      required: false
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot or screen recording
+      description: Optional. Attach only if it does not reveal sensitive workflow data.
+    validations:
+      required: false

@@ -1,0 +1,56 @@
+name: Feedback
+description: Share what worked, what was confusing, or what WorkflowGuard AI should check next.
+title: "Feedback: "
+labels: [feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying WorkflowGuard AI. Please do not paste secrets, credentials, API keys, private workflow data, or customer data.
+  - type: textarea
+    id: workflow-kind
+    attributes:
+      label: What kind of workflow did you audit?
+      description: A short, non-sensitive description is enough.
+      placeholder: Example: webhook intake, AI summarization, lead routing, internal ops automation.
+    validations:
+      required: true
+  - type: textarea
+    id: usefulness
+    attributes:
+      label: Did the report feel useful?
+      description: Tell us where it helped or where it missed the mark.
+    validations:
+      required: true
+  - type: textarea
+    id: confusing
+    attributes:
+      label: What was confusing?
+      description: Mention wording, scoring, findings, or workflow steps that were unclear.
+    validations:
+      required: false
+  - type: textarea
+    id: next-checks
+    attributes:
+      label: What should WorkflowGuard AI check next?
+      description: Add concrete checks, integrations, or report sections you would value.
+    validations:
+      required: false
+  - type: dropdown
+    id: use-again
+    attributes:
+      label: Would you use this again?
+      options:
+        - Yes
+        - Maybe
+        - No
+    validations:
+      required: true
+  - type: input
+    id: public-link
+    attributes:
+      label: Optional public workflow or template link
+      description: Only share a public, safe, non-sensitive link.
+      placeholder: https://...
+    validations:
+      required: false

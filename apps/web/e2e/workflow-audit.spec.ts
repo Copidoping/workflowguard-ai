@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(currentDir, "../../..");
+const feedbackUrl = "https://github.com/Copidoping/workflowguard-ai/issues/new/choose";
 
 function samplePath(fileName: string): string {
   return path.join(repoRoot, "samples", fileName);
@@ -61,6 +62,7 @@ test("webhook sample surfaces webhook validation warnings", async ({ page }) => 
   ).toBeVisible();
   await expect(page.getByText("Webhook inputs are validated")).toBeVisible();
 });
+
 test("landing links to the public example report", async ({ page }) => {
   await page.goto("/");
 
@@ -71,13 +73,42 @@ test("landing links to the public example report", async ({ page }) => {
 });
 
 test("use-case pages load with audit CTA", async ({ page }) => {
-  for (const path of [
+  for (const route of [
     "/use-cases/n8n-production-readiness",
     "/use-cases/n8n-webhook-security",
     "/use-cases/ai-workflow-reliability"
   ]) {
-    await page.goto(path);
+    await page.goto(route);
     await expect(page.getByText("WorkflowGuard AI use case")).toBeVisible();
     await expect(page.getByRole("main").getByRole("link", { name: "Run free audit" })).toBeVisible();
   }
+});
+
+test("feedback links point to the GitHub issue chooser", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.getByRole("heading", { name: "Help shape WorkflowGuard AI" })).toBeVisible();
+  await expect(page.getByRole("main").getByRole("link", { name: "Give feedback" })).toHaveAttribute(
+    "href",
+    feedbackUrl
+  );
+  await expect(page.getByRole("contentinfo").getByRole("link", { name: "Feedback" })).toHaveAttribute(
+    "href",
+    feedbackUrl
+  );
+});
+
+test("waitlist page is informational and does not collect email", async ({ page }) => {
+  await page.goto("/waitlist");
+
+  await expect(page.getByRole("heading", { name: "WorkflowGuard AI pro features are being shaped in public" })).toBeVisible();
+  await expect(page.getByText(/email waitlist is not active yet/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: "Try free audit" })).toHaveAttribute("href", "/upload");
+  await expect(page.getByRole("link", { name: "Follow on GitHub" })).toHaveAttribute(
+    "href",
+    "https://github.com/Copidoping/workflowguard-ai"
+  );
+  await expect(page.getByRole("link", { name: "Give feedback" })).toHaveAttribute("href", feedbackUrl);
+  await expect(page.locator("form")).toHaveCount(0);
+  await expect(page.locator('input[type="email"]')).toHaveCount(0);
 });

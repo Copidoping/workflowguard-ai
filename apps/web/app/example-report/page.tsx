@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FeedbackCta } from "../components/FeedbackCta";
 
 const scores = [
   ["Overall", 58],
@@ -159,6 +160,8 @@ export default function ExampleReportPage() {
           </div>
         </div>
       </section>
+
+      <FeedbackCta />
     </main>
   );
 }

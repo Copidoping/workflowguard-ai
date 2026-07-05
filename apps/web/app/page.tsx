@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FeedbackCta } from "./components/FeedbackCta";
 
 const trustItems = [
   "Local-first MVP",
@@ -261,6 +262,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <FeedbackCta />
+
       <section className="bg-paper py-16">
         <div className="mx-auto max-w-6xl px-5">
           <h2 className="text-3xl font-semibold text-ink">Use cases</h2>
@@ -273,16 +276,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <footer className="border-t border-ink/10 bg-white py-8">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 text-sm text-ink/65">
-          <p>WorkflowGuard AI by OpsForge Labs</p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/example-report" className="hover:text-moss">Example report</Link>
-            <Link href="/upload" className="hover:text-moss">Run free audit</Link>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { FeedbackCta } from "../components/FeedbackCta";
 import { useEffect, useState } from "react";
 import type { WorkflowReport } from "@workflowguard/report-generator";
 import { REPORT_STORAGE_KEY } from "../../lib/audit";
@@ -191,6 +192,8 @@ export default function ReportPage() {
           </ol>
         </div>
       </section>
+
+      <FeedbackCta />
     </main>
   );
 }
