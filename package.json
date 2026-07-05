@@ -1,0 +1,29 @@
+{
+  "name": "workflowguard-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WorkflowGuard AI audits n8n workflow JSON files for production readiness.",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @workflowguard/web dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "e2e": "playwright test",
+    "generate:sample-reports": "pnpm --filter @workflowguard/workflow-parser build && pnpm --filter @workflowguard/scoring-engine build && pnpm --filter @workflowguard/report-generator build && node scripts/generate-sample-reports.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@next/eslint-plugin-next": "^15.5.20",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^24.0.10",
+    "eslint": "^9.30.1",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vitest": "^3.2.4"
+  }
+}

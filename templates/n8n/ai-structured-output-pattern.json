@@ -1,0 +1,55 @@
+{
+  "name": "Educational Pattern - AI Structured Output",
+  "meta": {
+    "workflowguardTemplate": true,
+    "purpose": "Demonstrates an AI prompt pattern with structured output and validation placeholders.",
+    "safety": "Educational example only. Add your own reviewed model node and credentials in n8n."
+  },
+  "nodes": [
+    {
+      "id": "manual-start",
+      "name": "Start AI Review Run",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "parameters": {}
+    },
+    {
+      "id": "ai-structured-output",
+      "name": "AI Generate Structured Output",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [280, 0],
+      "parameters": {
+        "prompt": "Return only JSON with this shape: {\"summary\": string, \"riskLevel\": \"low\" | \"medium\" | \"high\", \"nextAction\": string}. Do not include prose outside JSON.",
+        "model": "example-model-placeholder"
+      }
+    },
+    {
+      "id": "validate-ai-output",
+      "name": "Validate AI JSON Output",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [560, 0],
+      "notes": "Replace this placeholder with schema validation before using AI output downstream.",
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.riskLevel }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Start AI Review Run": {
+      "main": [[{ "node": "AI Generate Structured Output", "type": "main", "index": 0 }]]
+    },
+    "AI Generate Structured Output": {
+      "main": [[{ "node": "Validate AI JSON Output", "type": "main", "index": 0 }]]
+    }
+  }
+}

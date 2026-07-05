@@ -1,0 +1,93 @@
+{
+  "name": "Clean Simple Workflow",
+  "nodes": [
+    {
+      "id": "start-manual-audit",
+      "name": "Start Manual Audit",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "parameters": {}
+    },
+    {
+      "id": "validate-input",
+      "name": "Validate Input Payload",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [260, 0],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.customerId }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "call-crm",
+      "name": "Call CRM with Retry",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [520, 0],
+      "parameters": {
+        "url": "https://api.example-crm.test/leads",
+        "method": "POST",
+        "sendBody": true,
+        "options": {
+          "timeout": 10000,
+          "retryOnFail": true,
+          "maxTries": 3
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "crm-header-auth",
+          "name": "CRM API Header"
+        }
+      }
+    },
+    {
+      "id": "log-success",
+      "name": "Log Successful Sync",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [780, 0],
+      "parameters": {
+        "channel": "#ops-alerts",
+        "text": "Lead synced successfully"
+      }
+    },
+    {
+      "id": "error-trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [0, 260],
+      "parameters": {}
+    },
+    {
+      "id": "workflow-notes",
+      "name": "Workflow Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [260, 260],
+      "parameters": {
+        "content": "Validates input, retries CRM calls, and alerts operations on sync behavior."
+      }
+    }
+  ],
+  "connections": {
+    "Start Manual Audit": {
+      "main": [[{ "node": "Validate Input Payload", "type": "main", "index": 0 }]]
+    },
+    "Validate Input Payload": {
+      "main": [[{ "node": "Call CRM with Retry", "type": "main", "index": 0 }]]
+    },
+    "Call CRM with Retry": {
+      "main": [[{ "node": "Log Successful Sync", "type": "main", "index": 0 }]]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "summary": "Clean Simple Workflow looks close to production-ready with an overall score of 100/100. The audit found 0 critical issue(s), 0 total finding(s), and 6 node(s).",
+  "workflowName": "Clean Simple Workflow",
+  "generatedAt": "2026-07-05T00:00:00.000Z",
+  "scoreBreakdown": {
+    "reliability_score": 100,
+    "security_score": 100,
+    "maintainability_score": 100,
+    "ai_readiness_score": 100,
+    "production_readiness_score": 100,
+    "overall_score": 100
+  },
+  "criticalIssues": [],
+  "warnings": [],
+  "recommendedFixes": [
+    {
+      "title": "Keep release checklist current",
+      "impact": "low",
+      "action": "Re-run this audit after meaningful workflow changes and before production releases."
+    }
+  ],
+  "productionChecklist": [
+    {
+      "label": "Workflow parses as n8n JSON",
+      "passed": true,
+      "detail": "The uploaded JSON has a plausible n8n nodes and connections shape."
+    },
+    {
+      "label": "Error handling exists",
+      "passed": true,
+      "detail": "Production workflows should have an Error Trigger, failure branch, or continue-on-fail strategy."
+    },
+    {
+      "label": "Webhook inputs are validated",
+      "passed": true,
+      "detail": "Webhook workflows should authenticate requests and validate payload shape before side effects."
+    },
+    {
+      "label": "HTTP calls use validation or authentication indicators",
+      "passed": true,
+      "detail": "External HTTP calls should use n8n credentials, authenticated request settings, signed headers, or validated payloads."
+    },
+    {
+      "label": "External calls have retry or fallback behavior",
+      "passed": true,
+      "detail": "HTTP calls should define retries, timeouts, fallback paths, or idempotent recovery."
+    },
+    {
+      "label": "AI outputs are structured",
+      "passed": true,
+      "detail": "LLM steps should return predictable schemas before downstream automation consumes the result."
+    },
+    {
+      "label": "Secrets are not hardcoded",
+      "passed": true,
+      "detail": "Credentials should live in n8n credentials or environment variables, not node parameters."
+    },
+    {
+      "label": "Workflow is documented",
+      "passed": true,
+      "detail": "Complex workflows need sticky notes or documentation that explain ownership and assumptions."
+    },
+    {
+      "label": "Alerting or logging exists for external dependencies",
+      "passed": true,
+      "detail": "External calls should emit useful logs or notify owners when production behavior degrades."
+    }
+  ],
+  "suggestedNextSteps": [
+    "Run a staging dry run with representative payloads and monitor logs."
+  ],
+  "metadata": {
+    "nodeCount": 6,
+    "triggerNodeCount": 2,
+    "webhookNodeCount": 0,
+    "httpRequestNodeCount": 1,
+    "aiNodeCount": 0,
+    "documentationNodeCount": 2,
+    "credentialReferenceCount": 1,
+    "connectionCount": 3
+  }
+}

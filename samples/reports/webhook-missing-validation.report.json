@@ -1,0 +1,153 @@
+{
+  "summary": "Webhook Missing Validation has material production-readiness gaps with an overall score of 68/100. The audit found 1 critical issue(s), 6 total finding(s), and 2 node(s).",
+  "workflowName": "Webhook Missing Validation",
+  "generatedAt": "2026-07-05T00:00:00.000Z",
+  "scoreBreakdown": {
+    "reliability_score": 60,
+    "security_score": 68,
+    "maintainability_score": 82,
+    "ai_readiness_score": 100,
+    "production_readiness_score": 32,
+    "overall_score": 68
+  },
+  "criticalIssues": [
+    {
+      "code": "WEBHOOK_WITHOUT_VALIDATION",
+      "severity": "critical",
+      "category": "security_score",
+      "message": "Webhook nodes exist without obvious authentication, signature checks, or payload validation.",
+      "recommendation": "Validate webhook payloads before processing and require an authentication or signature mechanism."
+    }
+  ],
+  "warnings": [
+    {
+      "code": "NO_ERROR_HANDLING",
+      "severity": "warning",
+      "category": "reliability_score",
+      "message": "No obvious error handling or failure branch was detected.",
+      "recommendation": "Add an Error Trigger workflow, continue-on-fail branches, or explicit failure handling for critical nodes."
+    },
+    {
+      "code": "HTTP_WITHOUT_RETRY",
+      "severity": "warning",
+      "category": "reliability_score",
+      "message": "HTTP request nodes were found without obvious retry, timeout, or fallback indicators.",
+      "recommendation": "Configure retries, timeouts, idempotency safeguards, and fallback paths for external API calls."
+    },
+    {
+      "code": "HTTP_WITHOUT_VALIDATION_OR_AUTH",
+      "severity": "warning",
+      "category": "security_score",
+      "message": "HTTP request nodes were found without obvious validation or authentication indicators.",
+      "recommendation": "Use n8n credentials, authenticated request settings, signed headers, or upstream validation before sending data to external APIs."
+    },
+    {
+      "code": "GENERIC_NODE_NAMES",
+      "severity": "warning",
+      "category": "maintainability_score",
+      "message": "1 node name(s) are too generic to explain intent.",
+      "recommendation": "Rename nodes to describe the business action, expected data, and destination system."
+    },
+    {
+      "code": "EXTERNAL_CALLS_WITHOUT_ALERTING",
+      "severity": "warning",
+      "category": "production_readiness_score",
+      "message": "The workflow calls external systems but no logging, alerting, or incident notification node was detected.",
+      "recommendation": "Add logging or alerting for failed external calls, slow responses, and unexpected empty responses."
+    }
+  ],
+  "recommendedFixes": [
+    {
+      "title": "No Error Handling",
+      "impact": "medium",
+      "action": "Add an Error Trigger workflow, continue-on-fail branches, or explicit failure handling for critical nodes."
+    },
+    {
+      "title": "Webhook Without Validation",
+      "impact": "high",
+      "action": "Validate webhook payloads before processing and require an authentication or signature mechanism."
+    },
+    {
+      "title": "Http Without Retry",
+      "impact": "medium",
+      "action": "Configure retries, timeouts, idempotency safeguards, and fallback paths for external API calls."
+    },
+    {
+      "title": "Http Without Validation Or Auth",
+      "impact": "medium",
+      "action": "Use n8n credentials, authenticated request settings, signed headers, or upstream validation before sending data to external APIs."
+    },
+    {
+      "title": "Generic Node Names",
+      "impact": "medium",
+      "action": "Rename nodes to describe the business action, expected data, and destination system."
+    },
+    {
+      "title": "External Calls Without Alerting",
+      "impact": "medium",
+      "action": "Add logging or alerting for failed external calls, slow responses, and unexpected empty responses."
+    }
+  ],
+  "productionChecklist": [
+    {
+      "label": "Workflow parses as n8n JSON",
+      "passed": true,
+      "detail": "The uploaded JSON has a plausible n8n nodes and connections shape."
+    },
+    {
+      "label": "Error handling exists",
+      "passed": false,
+      "detail": "Production workflows should have an Error Trigger, failure branch, or continue-on-fail strategy."
+    },
+    {
+      "label": "Webhook inputs are validated",
+      "passed": false,
+      "detail": "Webhook workflows should authenticate requests and validate payload shape before side effects."
+    },
+    {
+      "label": "HTTP calls use validation or authentication indicators",
+      "passed": false,
+      "detail": "External HTTP calls should use n8n credentials, authenticated request settings, signed headers, or validated payloads."
+    },
+    {
+      "label": "External calls have retry or fallback behavior",
+      "passed": false,
+      "detail": "HTTP calls should define retries, timeouts, fallback paths, or idempotent recovery."
+    },
+    {
+      "label": "AI outputs are structured",
+      "passed": true,
+      "detail": "LLM steps should return predictable schemas before downstream automation consumes the result."
+    },
+    {
+      "label": "Secrets are not hardcoded",
+      "passed": true,
+      "detail": "Credentials should live in n8n credentials or environment variables, not node parameters."
+    },
+    {
+      "label": "Workflow is documented",
+      "passed": true,
+      "detail": "Complex workflows need sticky notes or documentation that explain ownership and assumptions."
+    },
+    {
+      "label": "Alerting or logging exists for external dependencies",
+      "passed": false,
+      "detail": "External calls should emit useful logs or notify owners when production behavior degrades."
+    }
+  ],
+  "suggestedNextSteps": [
+    "Fix critical security and production-readiness findings first.",
+    "Add and test explicit failure handling before connecting live data.",
+    "Re-run the audit after applying the recommended fixes."
+  ],
+  "metadata": {
+    "nodeCount": 2,
+    "triggerNodeCount": 0,
+    "webhookNodeCount": 1,
+    "httpRequestNodeCount": 1,
+    "aiNodeCount": 0,
+    "documentationNodeCount": 0,
+    "credentialReferenceCount": 0,
+    "connectionCount": 1
+  }
+}

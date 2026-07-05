@@ -1,0 +1,50 @@
+{
+  "name": "Educational Pattern - HTTP Retry Fallback",
+  "meta": {
+    "workflowguardTemplate": true,
+    "purpose": "Demonstrates HTTP retry, timeout, fallback, and logging structure.",
+    "safety": "Educational example only. Uses example.invalid and contains no credentials."
+  },
+  "nodes": [
+    {
+      "id": "manual-start",
+      "name": "Start Review Run",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "parameters": {}
+    },
+    {
+      "id": "call-service",
+      "name": "Call External Service With Retry",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [280, 0],
+      "parameters": {
+        "url": "https://example.invalid/workflowguard-demo",
+        "method": "POST",
+        "sendBody": true,
+        "options": {
+          "timeout": 10000,
+          "retryOnFail": true,
+          "maxTries": 3
+        }
+      }
+    },
+    {
+      "id": "log-result",
+      "name": "Log External Call Result",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [560, 0],
+      "parameters": {
+        "content": "Add production logging or owner notification for failed or slow responses."
+      }
+    }
+  ],
+  "connections": {
+    "Start Review Run": {
+      "main": [[{ "node": "Call External Service With Retry", "type": "main", "index": 0 }]]
+    }
+  }
+}

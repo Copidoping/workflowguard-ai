@@ -1,0 +1,34 @@
+{
+  "name": "Webhook Missing Validation",
+  "nodes": [
+    {
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "parameters": {
+        "path": "incoming-lead",
+        "httpMethod": "POST",
+        "responseMode": "onReceived"
+      }
+    },
+    {
+      "id": "send-to-crm",
+      "name": "Send to CRM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [280, 0],
+      "parameters": {
+        "url": "https://api.example-crm.test/webhook-leads",
+        "method": "POST",
+        "sendBody": true
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{ "node": "Send to CRM", "type": "main", "index": 0 }]]
+    }
+  }
+}

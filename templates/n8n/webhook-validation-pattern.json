@@ -1,0 +1,55 @@
+{
+  "name": "Educational Pattern - Webhook Validation",
+  "meta": {
+    "workflowguardTemplate": true,
+    "purpose": "Demonstrates a safer webhook intake pattern with validation placeholders.",
+    "safety": "Educational example only. Review and adapt before production use."
+  },
+  "nodes": [
+    {
+      "id": "webhook-intake",
+      "name": "Webhook Intake",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "parameters": {
+        "path": "example-intake",
+        "httpMethod": "POST",
+        "responseMode": "onReceived"
+      }
+    },
+    {
+      "id": "validate-payload",
+      "name": "Validate Payload Shape",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [280, 0],
+      "notes": "Replace placeholder checks with the fields required by your production workflow.",
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.requiredField }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "document-assumptions",
+      "name": "Document Intake Assumptions",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [280, 220],
+      "parameters": {
+        "content": "Document accepted payload shape, owner, failure behavior, and review date."
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Intake": {
+      "main": [[{ "node": "Validate Payload Shape", "type": "main", "index": 0 }]]
+    }
+  }
+}
