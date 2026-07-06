@@ -1,0 +1,52 @@
+[
+  {
+    "id": "n8n-community-001",
+    "channel": "n8n_community",
+    "post_file": "launchops/posts/n8n-community.md",
+    "status": "draft_ready",
+    "priority": 1,
+    "requires_human_submit": true,
+    "published_url": null,
+    "notes": "First launch target."
+  },
+  {
+    "id": "reddit-n8n-001",
+    "channel": "reddit_n8n",
+    "post_file": "launchops/posts/reddit-n8n.md",
+    "status": "draft_ready",
+    "priority": 2,
+    "requires_human_submit": true,
+    "published_url": null,
+    "notes": "Second launch target after n8n community feedback."
+  },
+  {
+    "id": "reddit-nocode-001",
+    "channel": "reddit_nocode",
+    "post_file": "launchops/posts/reddit-nocode.md",
+    "status": "draft_ready",
+    "priority": 3,
+    "requires_human_submit": true,
+    "published_url": null,
+    "notes": "Third target if the n8n-specific post is understood."
+  },
+  {
+    "id": "indie-hackers-001",
+    "channel": "indie_hackers",
+    "post_file": "launchops/posts/indie-hackers.md",
+    "status": "draft_ready",
+    "priority": 4,
+    "requires_human_submit": true,
+    "published_url": null,
+    "notes": "Business validation angle after initial builder feedback."
+  },
+  {
+    "id": "product-hunt-teaser-001",
+    "channel": "product_hunt_teaser",
+    "post_file": "launchops/posts/product-hunt-teaser.md",
+    "status": "draft_ready",
+    "priority": 5,
+    "requires_human_submit": true,
+    "published_url": null,
+    "notes": "Later teaser only; do not use until the product has stronger feedback loops."
+  }
+]

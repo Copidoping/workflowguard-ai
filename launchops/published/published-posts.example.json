@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-07-06T00:00:00.000Z",
+  "posts": [
+    {
+      "queue_id": "n8n-community-001",
+      "channel": "n8n_community",
+      "status": "published",
+      "published_url": "https://example.com/public-topic-url",
+      "published_at": "2026-07-06T00:00:00.000Z",
+      "notes": "Example only. Replace in published-posts.local.json."
+    }
+  ]
+}

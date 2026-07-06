@@ -1,4 +1,4 @@
-﻿node_modules/
+node_modules/
 .env
 .env.*
 !.env.example
@@ -18,3 +18,8 @@ Thumbs.db
 .cache/
 .turbo/
 .vercel/
+launchops/**/*.local.json
+launchops/**/.env
+launchops/**/.env.*
+launchops/digests/*-feedback-digest.md
+launchops/digests/issue-drafts.md

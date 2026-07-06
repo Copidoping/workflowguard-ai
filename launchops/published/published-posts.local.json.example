@@ -1,0 +1,5 @@
+{
+  "instructions": "Copy this file to published-posts.local.json after publishing manually. Do not commit the local file.",
+  "updated_at": null,
+  "posts": []
+}

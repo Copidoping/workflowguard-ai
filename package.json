@@ -14,7 +14,14 @@
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "e2e": "playwright test",
-    "generate:sample-reports": "pnpm --filter @workflowguard/workflow-parser build && pnpm --filter @workflowguard/scoring-engine build && pnpm --filter @workflowguard/report-generator build && node scripts/generate-sample-reports.mjs"
+    "generate:sample-reports": "pnpm --filter @workflowguard/workflow-parser build && pnpm --filter @workflowguard/scoring-engine build && pnpm --filter @workflowguard/report-generator build && node scripts/generate-sample-reports.mjs",
+    "launch:assist": "node launchops/scripts/launch-assist.mjs",
+    "feedback:fetch": "node launchops/scripts/feedback-fetch.mjs",
+    "feedback:classify": "node launchops/scripts/feedback-classify.mjs",
+    "feedback:digest": "node launchops/scripts/feedback-digest.mjs",
+    "feedback:issues": "node launchops/scripts/feedback-to-issues.mjs",
+    "launchops:validate": "node launchops/scripts/validate-launchops.mjs",
+    "feedback:run": "pnpm feedback:fetch && pnpm feedback:classify && pnpm feedback:digest && pnpm feedback:issues"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

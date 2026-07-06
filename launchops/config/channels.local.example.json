@@ -1,0 +1,29 @@
+{
+  "instructions": [
+    "Copy this file to channels.local.json if you want local-only posting URLs or notes.",
+    "Do not add credentials or private account data.",
+    "Local files ending in .local.json are ignored by git."
+  ],
+  "channels": [
+    {
+      "id": "n8n_community",
+      "target_url": "https://community.n8n.io/",
+      "local_notes": "Paste the published topic URL after manual posting."
+    },
+    {
+      "id": "reddit_n8n",
+      "target_url": "https://www.reddit.com/r/n8n/submit",
+      "local_notes": "Review subreddit rules before posting."
+    },
+    {
+      "id": "reddit_nocode",
+      "target_url": "https://www.reddit.com/r/nocode/submit",
+      "local_notes": "Review subreddit rules before posting."
+    },
+    {
+      "id": "indie_hackers",
+      "target_url": "https://www.indiehackers.com/post/new",
+      "local_notes": "Keep the post framed as an MVP feedback request."
+    }
+  ]
+}

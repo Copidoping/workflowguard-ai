@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-07-06T00:00:00.000Z",
+  "items": [
+    {
+      "source": "github_issues",
+      "source_url": "https://github.com/Copidoping/workflowguard-ai/issues/1",
+      "author_public_handle": "example-builder",
+      "date": "2026-07-06T00:00:00.000Z",
+      "text_excerpt": "Example public feedback: the report was useful, but webhook validation checks could be clearer.",
+      "raw_url": "https://github.com/Copidoping/workflowguard-ai/issues/1",
+      "category_guess": "missing_check",
+      "status": "available",
+      "privacy_note": "Example public feedback only. Do not store private workflow data."
+    }
+  ]
+}

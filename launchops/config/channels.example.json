@@ -1,0 +1,50 @@
+{
+  "channels": [
+    {
+      "id": "n8n_community",
+      "type": "manual_assist",
+      "platform": "discourse_or_forum",
+      "target_url": null,
+      "post_url": "to be filled after posting",
+      "notes": "Manual and human-approved posting unless official API credentials are configured later."
+    },
+    {
+      "id": "reddit_n8n",
+      "type": "manual_assist",
+      "platform": "reddit",
+      "subreddit": "n8n",
+      "target_url": "https://www.reddit.com/r/n8n/submit",
+      "notes": "Manual and human-approved posting recommended. Reddit API automation requires OAuth and must respect subreddit rules."
+    },
+    {
+      "id": "reddit_nocode",
+      "type": "manual_assist",
+      "platform": "reddit",
+      "subreddit": "nocode",
+      "target_url": "https://www.reddit.com/r/nocode/submit",
+      "notes": "Manual and human-approved posting recommended. Review community rules before posting."
+    },
+    {
+      "id": "indie_hackers",
+      "type": "manual_assist",
+      "platform": "web_community",
+      "target_url": "https://www.indiehackers.com/post/new",
+      "notes": "Manual and human-approved posting. Keep the post transparent and feedback-oriented."
+    },
+    {
+      "id": "product_hunt_teaser",
+      "type": "manual_assist",
+      "platform": "launch_directory",
+      "target_url": null,
+      "notes": "Use later as a teaser or launch-prep draft, not as an automated submission."
+    },
+    {
+      "id": "github_issues",
+      "type": "feedback_sink",
+      "platform": "github",
+      "repo": "Copidoping/workflowguard-ai",
+      "target_url": "https://github.com/Copidoping/workflowguard-ai/issues/new/choose",
+      "notes": "Primary structured feedback sink for the public MVP."
+    }
+  ]
+}
